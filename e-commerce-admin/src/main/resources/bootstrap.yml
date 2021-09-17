@@ -1,0 +1,53 @@
+server:
+  port: 7001
+  servlet:
+    context-path: /e-commerce-admin
+
+spring:
+  application:
+    name: e-commerce-admin
+  security:
+    user:
+      name: admin #用于登录的用户名
+      password: admin #用于登录的密码
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+        namespace: 5d7e7cbf-e5a2-48f5-9ed7-fc1efeabe6e1
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+          user.name: admin
+          user.password: admin
+  thymeleaf:
+    check-template: false
+    check-template-location: false
+    # 被监控的应用状态变更为 DOWN、OFFLINE、UNKNOWN 时, 会自动发出告警: 实例的状态、原因、实例地址等信息
+    # 需要在 pom.xml 文件中添加 spring-boot-starter-mail 依赖
+    # 配置发送告警的邮箱服务器
+    # 但是, 这个要能连接上, 否则会报错
+#  mail:
+#    host: qinyi.imooc.com
+#    username: qinyi@imooc.com
+#    password: QinyiZhang
+#    default-encoding: UTF-8
+#  # 监控告警通知
+#  boot:
+#    admin:
+#      notify:
+#        mail:
+#          from: ${spring.mail.username}
+#          to: qinyi@imooc.com
+#          cc: qinyi@imooc.com
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'  # 需要开放的端点。默认值只打开 health 和 info 两个端点。通过设置 *, 可以开放所有端点
+  endpoint:
+    health:
+      show-details: always
