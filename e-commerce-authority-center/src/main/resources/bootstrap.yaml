@@ -14,7 +14,7 @@ spring:
         # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 # Nacos 服务器地址
         namespace: 5d7e7cbf-e5a2-48f5-9ed7-fc1efeabe6e1
         metadata:
-          //需要向admin暴露出来的端点
+          # 需要向admin暴露出来的端点
           management:
             context-path: ${server.servlet.context-path}/actuator
   jpa:
@@ -27,7 +27,7 @@ spring:
     open-in-view: false
   datasource:
     # 数据源
-    url: jdbc:mysql://127.0.0.1:3306/imooc_e_commerce?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/cao_e_commerce?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 123456
     type: com.zaxxer.hikari.HikariDataSource
@@ -40,7 +40,7 @@ spring:
       connection-timeout: 30000
       max-lifetime: 45000
       auto-commit: true
-      pool-name: ImoocEcommerceHikariCP
+      pool-name: CaoEcommerceHikariCP
 #  kafka:
 #    bootstrap-servers: 127.0.0.1:9092
 #    producer:
