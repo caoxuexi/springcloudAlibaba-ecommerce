@@ -11,6 +11,12 @@
 
     <artifactId>e-commerce-common</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+    </dependencies>
     <packaging>jar</packaging>
 
     <properties>
