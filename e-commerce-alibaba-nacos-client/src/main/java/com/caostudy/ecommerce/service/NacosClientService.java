@@ -5,6 +5,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCollapser;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
@@ -16,17 +17,13 @@ import java.util.concurrent.Future;
 @Slf4j
 @Service
 public class NacosClientService {
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
-    private final DiscoveryClient discoveryClient;
-
-    // 构造函数的方法进行依赖注入
-    public NacosClientService(DiscoveryClient discoveryClient) {
-        this.discoveryClient = discoveryClient;
-    }
 
     /**
      * <h2>打印 Nacos Client 信息到日志中</h2>
-     * */
+     */
     public List<ServiceInstance> getNacosClientInfo(String serviceId) {
 
         log.info("request nacos client to get service instance info: [{}]", serviceId);
@@ -35,7 +32,7 @@ public class NacosClientService {
 
     /**
      * <h2>提供给编程方式的 Hystrix 请求合并</h2>
-     * */
+     */
     public List<List<ServiceInstance>> getNacosClientInfos(List<String> serviceIds) {
 
         log.info("request nacos client to get service instance infos: [{}]",

@@ -25,7 +25,6 @@ import java.util.concurrent.Executor;
 //在gatewayConfig.java加载后再加载
 @DependsOn({"gatewayConfig"})
 public class DynamicRouteServiceImplByNacos {
-
     /**
      * Nacos 配置服务
      */

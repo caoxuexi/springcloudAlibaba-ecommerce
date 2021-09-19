@@ -38,11 +38,17 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId></dependency>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.caostudy.ecommerce</groupId>
             <artifactId>e-commerce-common</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- 通过sleuth实现链路追踪-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
     </dependencies>
 
