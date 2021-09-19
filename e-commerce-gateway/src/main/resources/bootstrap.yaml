@@ -1,0 +1,54 @@
+server:
+  port: 9001
+  servlet:
+    context-path: /caostudy
+
+spring:
+  application:
+    name: e-commerce-gateway
+  cloud:
+    nacos:
+      discovery:
+        enabled: true # 如果不想使用 Nacos 进行服务注册和发现, 设置为 false 即可
+        server-addr: 127.0.0.1:8848 # Nacos 服务器地址
+        namespace: 5d7e7cbf-e5a2-48f5-9ed7-fc1efeabe6e1
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+##     静态路由
+#      gateway:
+#        routes:
+#          - id: path_route # 路由的ID
+#            uri: 127.0.0.1:8080/user/{id} # 匹配后路由地址
+#            predicates: # 断言, 路径相匹配的进行路由
+#              - Path=/user/{id}
+#  kafka:
+#    bootstrap-servers: 127.0.0.1:9092
+#    producer:
+#      retries: 3
+#    consumer:
+#      auto-offset-reset: latest
+#  zipkin:
+#    sender:
+#      type: kafka # 默认是 web
+#    base-url: http://localhost:9411/
+  main:
+    allow-bean-definition-overriding: true  # 因为将来会引入很多依赖, 难免有重名的 bean
+
+# 这个地方独立配置, 是网关的数据, 代码 GatewayConfig.java 中读取被监听
+nacos:
+  gateway:
+    route:
+      config:
+        data-id: e-commerce-gateway-router
+        group: e-commerce
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
