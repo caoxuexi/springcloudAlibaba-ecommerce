@@ -41,16 +41,16 @@ spring:
       max-lifetime: 45000
       auto-commit: true
       pool-name: CaoEcommerceHikariCP
-#  kafka:
-#    bootstrap-servers: 127.0.0.1:9092
-#    producer:
-#      retries: 3
-#    consumer:
-#      auto-offset-reset: latest
-#  zipkin:
-#    sender:
-#      type: kafka # 默认是 web
-#    base-url: http://127.0.0.1:9411/
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    producer:
+      retries: 3
+    consumer:
+      auto-offset-reset: latest
+  zipkin:
+    sender:
+      type: kafka # 默认是 web
+    base-url: http://127.0.0.1:9411/
 
 # 暴露端点
 management:
