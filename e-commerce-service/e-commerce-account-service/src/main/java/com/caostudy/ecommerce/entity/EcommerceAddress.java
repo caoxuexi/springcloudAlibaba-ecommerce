@@ -1,5 +1,6 @@
 package com.caostudy.ecommerce.entity;
 
+import com.caostudy.ecommerce.account.AddressInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
