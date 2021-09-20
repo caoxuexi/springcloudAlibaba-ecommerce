@@ -22,16 +22,16 @@ spring:
 #            uri: 127.0.0.1:8080/user/{id} # 匹配后路由地址
 #            predicates: # 断言, 路径相匹配的进行路由
 #              - Path=/user/{id}
-#  kafka:
-#    bootstrap-servers: 127.0.0.1:9092
-#    producer:
-#      retries: 3
-#    consumer:
-#      auto-offset-reset: latest
-#  zipkin:
-#    sender:
-#      type: kafka # 默认是 web
-#    base-url: http://localhost:9411/
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    producer:
+      retries: 3
+    consumer:
+      auto-offset-reset: latest
+  zipkin:
+    sender:
+      type: kafka # 默认是 web
+    base-url: http://localhost:9411/
   main:
     allow-bean-definition-overriding: true  # 因为将来会引入很多依赖, 难免有重名的 bean
 
