@@ -54,7 +54,6 @@ public class AddressServiceTest extends BaseTest {
      * */
     @Test
     public void testGetAddressInfoById() {
-
         log.info("test get address info by id: [{}]", JSON.toJSONString(
                 addressService.getAddressInfoById(1L)
         ));
@@ -65,7 +64,6 @@ public class AddressServiceTest extends BaseTest {
      * */
     @Test
     public void testGetAddressInfoByTableId() {
-
         log.info("test get address info by table id: [{}]", JSON.toJSONString(
                 addressService.getAddressInfoByTableId(
                         new TableId(Collections.singletonList(new TableId.Id(1L)))

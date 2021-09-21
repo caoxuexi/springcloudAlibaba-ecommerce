@@ -7,22 +7,19 @@ import com.caostudy.ecommerce.filter.AccessContext;
 import com.caostudy.ecommerce.service.IBalanceService;
 import com.caostudy.ecommerce.vo.LoginUserInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <h1>用于余额相关服务接口实现</h1>
- * */
+ */
 @Slf4j
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class BalanceServiceImpl implements IBalanceService {
-
-    private final EcommerceBalanceDao balanceDao;
-
-    public BalanceServiceImpl(EcommerceBalanceDao balanceDao) {
-        this.balanceDao = balanceDao;
-    }
+    @Autowired
+    private EcommerceBalanceDao balanceDao;
 
     @Override
     public BalanceInfo getCurrentUserBalanceInfo() {

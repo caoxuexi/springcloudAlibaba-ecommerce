@@ -1,0 +1,43 @@
+### 创建用户地址信息
+POST http://127.0.0.1:9001/caostudy/ecommerce-account-service/address/create-address
+Content-Type: application/json
+e-commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJlLWNvbW1lcmNlLXVzZXIiOiJ7XCJpZFwiOjEwLFwidXNlcm5hbWVcIjpcIkNhb1N0dWR5QGltb29jLmNvbVwifSIsImp0aSI6IjRjNTg3MTMwLWNiM2ItNGQ4YS1iZDZmLTM5NTg0NDBkOTY5YSIsImV4cCI6MTYzMjI0MDAwMH0.YzN9DF2-dOF77va10o_z-Blf0wysvtM2Fgemjz-J8tYQqiCC9FOjIN0m00TTUgk7yb8IW-leDIPvZc5qwiTCuKA6JmqHh0pAi21Wrt1xPUbmYa_op354BL-7dwD-u8qcDc6GanLAgQxMedMAkNjRxg9Yonf_W6TsfDnGlM1_99xoYAkv5pB72BEr35FdLhI9uUjmjeEaioRtod9b9P7l7sQ3EzlDDShdciomceVtfn95zkMFn_5WAaqI3TdsnQ0HEQrc0qpjjYwKvHnkG3jxinOKFc8TL9sZlHkSkXDlAk72uwZY5YCz5HWysoqbLspVxHFQhGAluzUMGfCNgDI34A
+
+{
+  "userId": 10,
+  "addressItems": [
+    {
+      "username": "CaoStudy",
+      "phone": "16600000001",
+      "province": "浙江省",
+      "city": "杭州市",
+      "addressDetail": "拱墅区"
+    }
+  ]
+}
+
+### 当前登录用户地址信息
+GET http://127.0.0.1:9001/caostudy/ecommerce-account-service/address/current-address
+Accept: application/json
+e-commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJlLWNvbW1lcmNlLXVzZXIiOiJ7XCJpZFwiOjEwLFwidXNlcm5hbWVcIjpcIkNhb1N0dWR5QGltb29jLmNvbVwifSIsImp0aSI6IjRjNTg3MTMwLWNiM2ItNGQ4YS1iZDZmLTM5NTg0NDBkOTY5YSIsImV4cCI6MTYzMjI0MDAwMH0.YzN9DF2-dOF77va10o_z-Blf0wysvtM2Fgemjz-J8tYQqiCC9FOjIN0m00TTUgk7yb8IW-leDIPvZc5qwiTCuKA6JmqHh0pAi21Wrt1xPUbmYa_op354BL-7dwD-u8qcDc6GanLAgQxMedMAkNjRxg9Yonf_W6TsfDnGlM1_99xoYAkv5pB72BEr35FdLhI9uUjmjeEaioRtod9b9P7l7sQ3EzlDDShdciomceVtfn95zkMFn_5WAaqI3TdsnQ0HEQrc0qpjjYwKvHnkG3jxinOKFc8TL9sZlHkSkXDlAk72uwZY5YCz5HWysoqbLspVxHFQhGAluzUMGfCNgDI34A
+
+### 通过 id 获取用户地址信息
+GET http://127.0.0.1:9001/caostudy/ecommerce-account-service/address/address-info?id=10
+Accept: application/json
+e-commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJlLWNvbW1lcmNlLXVzZXIiOiJ7XCJpZFwiOjEwLFwidXNlcm5hbWVcIjpcIkNhb1N0dWR5QGltb29jLmNvbVwifSIsImp0aSI6IjRjNTg3MTMwLWNiM2ItNGQ4YS1iZDZmLTM5NTg0NDBkOTY5YSIsImV4cCI6MTYzMjI0MDAwMH0.YzN9DF2-dOF77va10o_z-Blf0wysvtM2Fgemjz-J8tYQqiCC9FOjIN0m00TTUgk7yb8IW-leDIPvZc5qwiTCuKA6JmqHh0pAi21Wrt1xPUbmYa_op354BL-7dwD-u8qcDc6GanLAgQxMedMAkNjRxg9Yonf_W6TsfDnGlM1_99xoYAkv5pB72BEr35FdLhI9uUjmjeEaioRtod9b9P7l7sQ3EzlDDShdciomceVtfn95zkMFn_5WAaqI3TdsnQ0HEQrc0qpjjYwKvHnkG3jxinOKFc8TL9sZlHkSkXDlAk72uwZY5YCz5HWysoqbLspVxHFQhGAluzUMGfCNgDI34A
+
+### 获取用户地址信息
+POST http://127.0.0.1:9001/caostudy/ecommerce-account-service/address/address-info-by-table-id
+Content-Type: application/json
+e-commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJlLWNvbW1lcmNlLXVzZXIiOiJ7XCJpZFwiOjEwLFwidXNlcm5hbWVcIjpcIkNhb1N0dWR5QGltb29jLmNvbVwifSIsImp0aSI6IjRjNTg3MTMwLWNiM2ItNGQ4YS1iZDZmLTM5NTg0NDBkOTY5YSIsImV4cCI6MTYzMjI0MDAwMH0.YzN9DF2-dOF77va10o_z-Blf0wysvtM2Fgemjz-J8tYQqiCC9FOjIN0m00TTUgk7yb8IW-leDIPvZc5qwiTCuKA6JmqHh0pAi21Wrt1xPUbmYa_op354BL-7dwD-u8qcDc6GanLAgQxMedMAkNjRxg9Yonf_W6TsfDnGlM1_99xoYAkv5pB72BEr35FdLhI9uUjmjeEaioRtod9b9P7l7sQ3EzlDDShdciomceVtfn95zkMFn_5WAaqI3TdsnQ0HEQrc0qpjjYwKvHnkG3jxinOKFc8TL9sZlHkSkXDlAk72uwZY5YCz5HWysoqbLspVxHFQhGAluzUMGfCNgDI34A
+
+{
+  "ids": [
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    }
+  ]
+}
