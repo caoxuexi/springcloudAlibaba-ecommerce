@@ -10,9 +10,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * <h1>用户地址信息</h1>
+ * <h1>用户全部的地址信息</h1>
  * */
-@ApiModel(description = "用户地址信息")
+@ApiModel(description = "用户全部的地址信息")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

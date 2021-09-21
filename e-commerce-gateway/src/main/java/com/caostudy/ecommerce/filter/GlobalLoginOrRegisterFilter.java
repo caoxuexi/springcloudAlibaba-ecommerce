@@ -124,6 +124,7 @@ public class GlobalLoginOrRegisterFilter implements GlobalFilter, Ordered {
         String requestUrl = String.format(
                 uriFormat, serviceInstance.getHost(), serviceInstance.getPort()
         );
+        //用fastJson包的方法把json字符串转为对象
         UsernameAndPassword requestBody = JSON.parseObject(
                 parseBodyFromRequest(request), UsernameAndPassword.class
         );
