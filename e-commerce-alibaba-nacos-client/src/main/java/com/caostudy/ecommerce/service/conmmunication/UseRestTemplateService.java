@@ -5,6 +5,7 @@ import com.caostudy.ecommerce.constant.CommonConstant;
 import com.caostudy.ecommerce.vo.JwtToken;
 import com.caostudy.ecommerce.vo.UsernameAndPassword;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.http.HttpEntity;
@@ -15,20 +16,17 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * <h1>使用 RestTemplate 实现微服务通信</h1>
- * */
+ */
 @Slf4j
 @Service
 public class UseRestTemplateService {
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
 
-    private final LoadBalancerClient loadBalancerClient;
-
-    public UseRestTemplateService(LoadBalancerClient loadBalancerClient) {
-        this.loadBalancerClient = loadBalancerClient;
-    }
 
     /**
      * <h2>从授权服务中获取 JwtToken</h2>
-     * */
+     */
     public JwtToken getTokenFromAuthorityService(UsernameAndPassword usernameAndPassword) {
 
         // 第一种方式: 写死 url
@@ -48,7 +46,7 @@ public class UseRestTemplateService {
 
     /**
      * <h2>从授权服务中获取 JwtToken, 且带有负载均衡</h2>
-     * */
+     */
     public JwtToken getTokenFromAuthorityServiceWithLoadBalancer(
             UsernameAndPassword usernameAndPassword
     ) {

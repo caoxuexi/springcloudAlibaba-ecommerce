@@ -3,7 +3,7 @@ POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/rest-template
 Content-Type: application/json
 
 {
-  "username": "Qinyi@imooc.com",
+  "username": "CaoStudy@imooc.com",
   "password": "25d55ad283aa400af464c76d713c07ad"
 }
 
@@ -13,7 +13,7 @@ POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/rest-template-lo
 Content-Type: application/json
 
 {
-  "username": "Qinyi@imooc.com",
+  "username": "CaoStudy@imooc.com",
   "password": "25d55ad283aa400af464c76d713c07ad"
 }
 
@@ -23,7 +23,7 @@ POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/ribbon
 Content-Type: application/json
 
 {
-  "username": "Qinyi@imooc.com",
+  "username": "CaoStudy@imooc.com",
   "password": "25d55ad283aa400af464c76d713c07ad"
 }
 
@@ -33,7 +33,7 @@ POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/thinking-in-ribb
 Content-Type: application/json
 
 {
-  "username": "Qinyi@imooc.com",
+  "username": "CaoStudy@imooc.com",
   "password": "25d55ad283aa400af464c76d713c07ad"
 }
 
@@ -43,7 +43,7 @@ POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/token-by-feign
 Content-Type: application/json
 
 {
-  "username": "Qinyi@imooc.com",
+  "username": "CaoStudy@imooc.com",
   "password": "25d55ad283aa400af464c76d713c07ad"
 }
 
@@ -53,6 +53,6 @@ POST http://127.0.0.1:8000/ecommerce-nacos-client/communication/thinking-in-feig
 Content-Type: application/json
 
 {
-  "username": "Qinyi@imooc.com",
+  "username": "CaoStudy@imooc.com",
   "password": "25d55ad283aa400af464c76d713c07ad"
 }
