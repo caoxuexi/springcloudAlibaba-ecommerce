@@ -1,0 +1,58 @@
+### 导入商品
+POST http://127.0.0.1:9001/caostudy/ecommerce-goods-service/async-goods/import-goods
+Content-Type: application/json
+e-commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJlLWNvbW1lcmNlLXVzZXIiOiJ7XCJpZFwiOjEwLFwidXNlcm5hbWVcIjpcIkNhb1N0dWR5QGltb29jLmNvbVwifSIsImp0aSI6IjgyYjkzN2E2LTQxOTMtNGJlMC04OTlmLThkMzFiOTAwZGE0NyIsImV4cCI6MTYzMjMyNjQwMH0.CtlBZ3i3eZMkpCL1JN6QbjmLOf1cOrxtZ9wTbmHsXHEQO1IE2adI32asvBY9YaCaY0poMRAmV0DJ6ZJf-nK-c9maa7Z5pf9sfqMJi7VoJRmFa1MmUpw1wMIBZPRu0sXamILO5UA6zIqb6z_fuCKASeLvkkJa8xizM_2VWxrNwnUHRMJy222CeKclqyfUdWvzAYU0-3G7ip_MNtP6mWz7y3FGT5rysBEX-Vt-Dqov-9bv5-TRwNMvzyy-CkJGz6pv15CobrjZcuvkLeCiAcAjfNnxNcbFSqe50H_3Omx7Z2Hl7TXzyfXn2SZCgp1BJ4gyo-gAmJQcCrxrsZNg20cMAA
+
+[
+  {
+    "goodsCategory": "10001",
+    "brandCategory": "20001",
+    "goodsName": "iphone 11",
+    "goodsPic": "",
+    "goodsDescription": "苹果手机",
+    "price": 100000,
+    "supply": 2000000,
+    "goodsProperty": {
+      "size": "12cm * 6.5cm",
+      "color": "绿色",
+      "material": "金属机身",
+      "pattern": "纯色"
+    }
+  },
+  {
+    "goodsCategory": "10001",
+    "brandCategory": "20001",
+    "goodsName": "iphone 12",
+    "goodsPic": "",
+    "goodsDescription": "苹果手机",
+    "price": 150000,
+    "supply": 2000000,
+    "goodsProperty": {
+      "size": "12cm * 6.5cm",
+      "color": "绿色",
+      "material": "金属机身",
+      "pattern": "纯色"
+    }
+  },
+  {
+    "goodsCategory": "10001",
+    "brandCategory": "20001",
+    "goodsName": "iphone 13",
+    "goodsPic": "",
+    "goodsDescription": "苹果手机",
+    "price": 160000,
+    "supply": 2000000,
+    "goodsProperty": {
+      "size": "12cm * 6.5cm",
+      "color": "绿色",
+      "material": "金属机身",
+      "pattern": "纯色"
+    }
+  }
+]
+
+
+### 查询导入商品状态
+GET http://127.0.0.1:9001/caostudy/ecommerce-goods-service/async-goods/task-info?taskId=586bac70-a4e5-44e1-9173-5a8957a17935
+Accept: application/json
+e-commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJlLWNvbW1lcmNlLXVzZXIiOiJ7XCJpZFwiOjEwLFwidXNlcm5hbWVcIjpcIkNhb1N0dWR5QGltb29jLmNvbVwifSIsImp0aSI6IjgyYjkzN2E2LTQxOTMtNGJlMC04OTlmLThkMzFiOTAwZGE0NyIsImV4cCI6MTYzMjMyNjQwMH0.CtlBZ3i3eZMkpCL1JN6QbjmLOf1cOrxtZ9wTbmHsXHEQO1IE2adI32asvBY9YaCaY0poMRAmV0DJ6ZJf-nK-c9maa7Z5pf9sfqMJi7VoJRmFa1MmUpw1wMIBZPRu0sXamILO5UA6zIqb6z_fuCKASeLvkkJa8xizM_2VWxrNwnUHRMJy222CeKclqyfUdWvzAYU0-3G7ip_MNtP6mWz7y3FGT5rysBEX-Vt-Dqov-9bv5-TRwNMvzyy-CkJGz6pv15CobrjZcuvkLeCiAcAjfNnxNcbFSqe50H_3Omx7Z2Hl7TXzyfXn2SZCgp1BJ4gyo-gAmJQcCrxrsZNg20cMAA
