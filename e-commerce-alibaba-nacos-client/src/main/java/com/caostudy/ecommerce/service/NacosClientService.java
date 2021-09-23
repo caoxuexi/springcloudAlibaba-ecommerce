@@ -20,12 +20,10 @@ public class NacosClientService {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-
     /**
      * <h2>打印 Nacos Client 信息到日志中</h2>
      */
     public List<ServiceInstance> getNacosClientInfo(String serviceId) {
-
         log.info("request nacos client to get service instance info: [{}]", serviceId);
         return discoveryClient.getInstances(serviceId);
     }
@@ -34,7 +32,6 @@ public class NacosClientService {
      * <h2>提供给编程方式的 Hystrix 请求合并</h2>
      */
     public List<List<ServiceInstance>> getNacosClientInfos(List<String> serviceIds) {
-
         log.info("request nacos client to get service instance infos: [{}]",
                 JSON.toJSONString(serviceIds));
         List<List<ServiceInstance>> result = new ArrayList<>(serviceIds.size());
@@ -43,8 +40,9 @@ public class NacosClientService {
         return result;
     }
 
-    // 使用注解实现 Hystrix 请求合并
-
+    /**
+     * <h2>使用注解实现 Hystrix 请求合并</h2>
+     */
     @HystrixCollapser(
             batchMethod = "findNacosClientInfos",
             scope = com.netflix.hystrix.HystrixCollapser.Scope.GLOBAL,
@@ -53,7 +51,6 @@ public class NacosClientService {
             }
     )
     public Future<List<ServiceInstance>> findNacosClientInfo(String serviceId) {
-
         // 系统运行正常, 不会走这个方法
         throw new RuntimeException("This method body should not be executed!");
     }

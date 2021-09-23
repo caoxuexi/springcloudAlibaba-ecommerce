@@ -1,6 +1,7 @@
 package com.caostudy.ecommerce.controller;
 
 import com.caostudy.ecommerce.service.conmmunication.AuthorityFeignClient;
+import com.caostudy.ecommerce.service.conmmunication.UseFeignApi;
 import com.caostudy.ecommerce.service.conmmunication.UseRestTemplateService;
 import com.caostudy.ecommerce.service.conmmunication.UseRibbonService;
 import com.caostudy.ecommerce.vo.JwtToken;
@@ -27,6 +28,9 @@ public class CommunicationController {
 
     @Autowired
     private AuthorityFeignClient feignClient;
+
+    @Autowired
+    private UseFeignApi useFeignApi;
 
     @PostMapping("/rest-template")
     public JwtToken getTokenFromAuthorityService(
@@ -55,5 +59,10 @@ public class CommunicationController {
     @PostMapping("/token-by-feign")
     public JwtToken getTokenByFeign(@RequestBody UsernameAndPassword usernameAndPassword) {
         return feignClient.getTokenByFeign(usernameAndPassword);
+    }
+
+    @PostMapping("/thinking-in-feign")
+    public JwtToken thinkingInFeign(@RequestBody UsernameAndPassword usernameAndPassword) {
+        return useFeignApi.thinkingInFeign(usernameAndPassword);
     }
 }
