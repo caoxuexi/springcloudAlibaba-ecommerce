@@ -1,0 +1,88 @@
+server:
+  port: 8006
+  servlet:
+    context-path: /ecommerce-stream-client
+
+spring:
+  application:
+    name: e-commerce-stream-client
+  cloud:
+    nacos:
+      # 服务注册发现
+      discovery:
+        enabled: true # 如果不想使用 Nacos 进行服务注册和发现, 设置为 false 即可
+        server-addr: 127.0.0.1:8848
+        namespace: 5d7e7cbf-e5a2-48f5-9ed7-fc1efeabe6e1
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+    # 消息驱动的配置
+    stream:
+      # SpringCloud Stream + Kafka
+      kafka:
+        binder:
+          brokers: 127.0.0.1:9092
+          auto-create-topics: true  # 如果设置为false, 就不会自动创建Topic, 你在使用之前需要手动创建好
+      # SpringCloud Stream + RocketMQ
+      #      rocketmq:
+      #        binder:
+      #          name-server: 127.0.0.1:9876
+      # 开启 stream 分区支持
+      instanceCount: 1  # 消费者的总数
+      instanceIndex: 0  # 当前消费者的索引
+      bindings:
+        # 默认发送方
+        output:      # 这里用 Stream 给我们提供的默认 output 信道
+          destination: ecommerce-stream-client-default    # 消息发往的目的地, Kafka 中就是 Topic
+          content-type: text/plain    # 消息发送的格式, 接收端不用指定格式, 但是发送端要
+          # 消息分区
+          producer:
+            # partitionKeyExpression: payload.author  # 分区关键字, payload 指的是发送的对象, author 是对象中的属性
+            partitionCount: 1   # 分区大小
+            # 使用自定义的分区策略, 注释掉 partitionKeyExpression
+            partitionKeyExtractorName: qinyiPartitionKeyExtractorStrategy
+            partitionSelectorName: qinyiPartitionSelectorStrategy
+        # 默认接收方
+        input:      # 这里用 Stream 给我们提供的默认 input 信道
+          destination: ecommerce-stream-client-default
+          group: e-commerce-qinyi-default
+          # 消费者开启分区支持
+          consumer:
+            partitioned: true
+
+        # Qinyi 发送方
+        caoOutput:
+          destination: ecommerce-stream-client-cao
+          content-type: text/plain
+        # Qinyi 接收方
+        caoInput:
+          destination: ecommerce-stream-client-cao
+          group: e-commerce-cao-cao
+
+  # spring-kafka 的配置
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    producer:
+      retries: 3
+    consumer:
+      auto-offset-reset: latest
+  sleuth:
+    sampler:
+      # ProbabilityBasedSampler 抽样策略
+      probability: 1.0  # 采样比例, 1.0 表示 100%, 默认是 0.1
+      # RateLimitingSampler 抽样策略
+      rate: 100  # 每秒间隔接受的 trace 量
+  zipkin:
+    sender:
+      type: kafka # 默认是 http
+    base-url: http://localhost:9411/
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

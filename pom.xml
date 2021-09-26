@@ -16,6 +16,7 @@
         <module>e-commerce-gateway</module>
         <module>e-commerce-service</module>
         <module>e-commerce-hystrix-dashboard</module>
+        <module>e-commerce-stream-client</module>
     </modules>
 
     <properties>
