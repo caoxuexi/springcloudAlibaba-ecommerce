@@ -1,0 +1,20 @@
+### 创建订单
+POST http://127.0.0.1:9001/caostudy/ecommerce-order-service/order/create-order
+Content-Type: application/json
+Accept: application/json
+e-commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJlLWNvbW1lcmNlLXVzZXIiOiJ7XCJpZFwiOjEwLFwidXNlcm5hbWVcIjpcIkNhb1N0dWR5QGltb29jLmNvbVwifSIsImp0aSI6Ijk3YTNjNWY0LTc2NWUtNGYyNi1iMmZlLTllOGUzNjE1ZmMxZiIsImV4cCI6MTYzMjg0NDgwMH0.PlJ8uStrzesm4RlYjWgEhUZbBK0vqIJfXroUg5zHB48nKIEKgbwJW34EjLOqa1PnG3838kcXI181aj_oRvgp5pItiTbKkdXn_NT-vlMe2ghPZsAJiQ1Rz8YX4PFnEbJe-I1H56OXhtezX681Qe2muYboXzrak0uiYlRS4G2_Tf4d2FZMiEJIVvMz1LMnB3iKCiCrrVm7hD-ML7H620qpIK1tis7eVEhesPimhUAvUXF6HcYI0vHviYgzp--W1fHXDoWjCsPWliOo7-IVaj3HOidEko3DX0ISmPaO44sIlspqtmKODD5I4Yc_jfS5wtIclCx86RTuR1OLkLRO2Mfhxg
+
+{
+  "userAddress": 1,
+  "orderItems": [
+    {
+      "goodsId": 10,
+      "count": 5
+    }
+  ]
+}
+
+### 查询订单
+GET http://127.0.0.1:9001/imooc/ecommerce-order-service/order/order-detail?page=2
+Accept: application/json
+e-commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJlLWNvbW1lcmNlLXVzZXIiOiJ7XCJpZFwiOjEwLFwidXNlcm5hbWVcIjpcIkNhb1N0dWR5QGltb29jLmNvbVwifSIsImp0aSI6Ijk3YTNjNWY0LTc2NWUtNGYyNi1iMmZlLTllOGUzNjE1ZmMxZiIsImV4cCI6MTYzMjg0NDgwMH0.PlJ8uStrzesm4RlYjWgEhUZbBK0vqIJfXroUg5zHB48nKIEKgbwJW34EjLOqa1PnG3838kcXI181aj_oRvgp5pItiTbKkdXn_NT-vlMe2ghPZsAJiQ1Rz8YX4PFnEbJe-I1H56OXhtezX681Qe2muYboXzrak0uiYlRS4G2_Tf4d2FZMiEJIVvMz1LMnB3iKCiCrrVm7hD-ML7H620qpIK1tis7eVEhesPimhUAvUXF6HcYI0vHviYgzp--W1fHXDoWjCsPWliOo7-IVaj3HOidEko3DX0ISmPaO44sIlspqtmKODD5I4Yc_jfS5wtIclCx86RTuR1OLkLRO2Mfhxg

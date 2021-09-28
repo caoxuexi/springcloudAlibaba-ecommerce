@@ -1,0 +1,93 @@
+server:
+  port: 8002
+  servlet:
+    context-path: /ecommerce-order-service
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: e-commerce-order-service
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 127.0.0.1:9092
+          auto-create-topics: true
+      bindings:
+        logisticsOutput:
+          destination: e-commerce-topic   # kafka topic
+          content-type: text/plain
+    alibaba:
+      seata:
+        tx-service-group: cao-ecommerce # seata 全局事务分组
+    nacos:
+      discovery:
+        enabled: true # 如果不想使用 Nacos 进行服务注册和发现, 设置为 false 即可
+        server-addr: 127.0.0.1:8848
+        # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 # Nacos 服务器地址
+        namespace: 5d7e7cbf-e5a2-48f5-9ed7-fc1efeabe6e1
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+    # 开启 ribbon 重试机制, 即获取服务失败是否从另外一个节点重试
+    loadbalancer:
+      retry:
+        enabled: true
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    producer:
+      retries: 3
+    consumer:
+      auto-offset-reset: latest
+  sleuth:
+    sampler:
+      probability: 1.0  # 采样比例, 1.0 表示 100%, 默认是 0.1
+  zipkin:
+    sender:
+      type: kafka # 默认是 http
+    base-url: http://localhost:9411/
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.show_sql: true
+      hibernate.format_sql: true
+    open-in-view: false
+  datasource:
+    # 数据源
+    url: jdbc:mysql://127.0.0.1:3306/seata?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 连接池
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 4
+      idle-timeout: 30000
+      connection-timeout: 30000
+      max-lifetime: 45000
+      auto-commit: true
+      pool-name: ImoocEcommerceHikariCP
+
+# feign 相关的配置
+feign:
+  hystrix:
+    enabled: true   # Hystrix 默认是关闭的
+  client:
+    config:
+      default:  # 全局的
+        connectTimeout: 2000  # 默认的连接超时时间是 10s
+        readTimeout: 5000
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

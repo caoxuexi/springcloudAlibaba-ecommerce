@@ -27,6 +27,11 @@
             <artifactId>e-commerce-mvc-config</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!--openfeign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <!-- seata -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
