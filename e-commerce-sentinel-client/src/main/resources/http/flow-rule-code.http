@@ -1,0 +1,3 @@
+### 硬编码的流控规则
+GET 127.0.0.1:8100/ecommerce-sentinel-client/code/flow-rule
+Content-Type: application/json

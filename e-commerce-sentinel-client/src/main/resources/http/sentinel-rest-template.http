@@ -1,0 +1,8 @@
+### 获取 Token
+POST 127.0.0.1:8100/ecommerce-sentinel-client/sentinel-rest-template/get-token
+Content-Type: application/json
+
+{
+  "username": "Qinyi@imooc.com",
+  "password": "25d55ad283aa400af464c76d713c07ad"
+}

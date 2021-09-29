@@ -1,0 +1,7 @@
+### 根据资源名称限流
+GET 127.0.0.1:8100/ecommerce-sentinel-client/dashboard/by-resource
+Content-Type: application/json
+
+### 根据 URL 限流
+GET 127.0.0.1:8100/ecommerce-sentinel-client/dashboard/by-url
+Content-Type: application/json

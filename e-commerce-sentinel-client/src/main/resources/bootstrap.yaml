@@ -1,0 +1,59 @@
+server:
+  port: 8100
+  servlet:
+    context-path: /ecommerce-sentinel-client
+
+spring:
+  application:
+    name: e-commerce-sentinel-client # 应用名称也是构成 Nacos 配置管理 dataId 字段的一部分 (当 config.prefix 为空时)
+  cloud:
+    nacos:
+      # 服务注册发现
+      discovery:
+        enabled: true # 如果不想使用 Nacos 进行服务注册和发现, 设置为 false 即可
+        server-addr: 127.0.0.1:8848
+        #  server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 # Nacos 服务器地址
+        namespace: 5d7e7cbf-e5a2-48f5-9ed7-fc1efeabe6e1
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+    sentinel:
+      # 配置 sentinel dashboard 地址
+      transport:
+        dashboard: 127.0.0.1:7777
+        port: 8719 # 会在应用对应的机器上启动一个 Http Server, 该 Server 会与 Sentinel 控制台做交互
+      datasource:
+        # 名称任意, 代表数据源
+        ds:
+          nacos:
+            # NacosDataSourceProperties.java 中定义
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            dataId: ${spring.application.name}-sentinel
+            namespace: ${spring.cloud.nacos.discovery.namespace}
+            groupId: SENTINEL_GROUP
+            data-type: json
+            # 规则类型: com.alibaba.cloud.sentinel.datasource.RuleType
+            # FlowRule 就是限流规则
+            rule-type: flow
+      # 服务启动直接建立心跳连接
+      eager: true
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+# 打开 Sentinel 对 Feign 的支持
+feign:
+  sentinel:
+    enabled: true
+
+# 开启或关闭 @SentinelRestTemplate 注解
+resttemplate:
+  sentinel:
+    enabled: true

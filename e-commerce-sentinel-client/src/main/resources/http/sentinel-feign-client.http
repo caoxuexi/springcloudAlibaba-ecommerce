@@ -1,0 +1,3 @@
+### Sentinel Feign Client
+GET 127.0.0.1:8100/ecommerce-sentinel-client/sentinel-feign/result-by-feign?code=200
+Content-Type: application/json
